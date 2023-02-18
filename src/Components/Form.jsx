@@ -1,24 +1,19 @@
 import styled from "styled-components";
+import { useGlobalContext } from "../Context";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
+import Step4 from "./Step4";
 
 const Form = () => {
+  const { page } = useGlobalContext();
   return (
     <Wrapper className='section-center'>
-      <h2>Personal info</h2>
-      <p>Provide your name, email address, and phone number</p>
-      <form>
-        <div className='form-control'>
-          <label htmlFor='name'>Name</label>
-          <input type='text' id='name' name='name' />
-        </div>
-        <div className='form-control'>
-          <label htmlFor='email'>Email Address</label>
-          <input type='email' id='name' name='email' />
-        </div>
-        <div className='form-control'>
-          <label htmlFor='phoneNumber'>Phone Number</label>
-          <input type='number' id='phoneNumber' name='phoneNumber' />
-        </div>
-      </form>
+      {/* {page === 1 && <Step1 />}
+      {page === 2 && <Step2 />}
+      {page === 3 && <Step3 />}
+      {page === 4 && <Step4 />} */}
+      <Step2 />
     </Wrapper>
   );
 };
@@ -27,30 +22,19 @@ const Wrapper = styled.article`
   box-shadow: var(--dark-shadow);
   padding: 3em 2em;
   border-radius: var(--radius);
-  margin-top: -20%;
   background-color: var(--clr-white);
-  position: relative;
-  z-index: 5;
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1em;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-  }
-  .form-control {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-  }
 
-  .form-control input {
-    height: 2em;
-    outline: none;
-    border: 1px solid grey;
-    border-radius: var(--radius);
+  @media screen and (min-width: 800px) {
+    width: unset;
+    margin: unset;
+    box-shadow: unset;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    padding: 0 2em;
+  }
+  @media screen and (min-width: 1070px) {
+    width: 90%;
+    margin: 0 auto;
   }
 `;
 

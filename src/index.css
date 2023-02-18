@@ -38,7 +38,7 @@ Variables
   --clr-grey-7: hsl(211, 27%, 70%);
   --clr-grey-8: hsl(210, 31%, 80%);
   --clr-grey-9: hsl(212, 33%, 89%);
-  --clr-grey-10: #f7f9fb;
+  --clr-grey-10: #e9eef4;
   --clr-white: #fff;
   --clr-black: #222;
 
@@ -51,7 +51,7 @@ Variables
   --dark-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   --radius: 0.25rem;
   --smallWidth: 85vw;
-  --maxWidth: 1200px;
+  --maxWidth: 1170px;
 }
 
 .dark-mode {
@@ -72,12 +72,13 @@ Variables
 body {
   font-family: var(--ff-primary);
   font-weight: var(--fw-reg);
-  color: var(--clr-grey-1);
+  color: var(--clr-grey-2);
   line-height: 1.5;
   font-size: 0.875rem;
   /* transition: var(--transition); */
-  background-color: var(--clr-white);
+  background-color: var(--clr-grey-10);
 }
+
 img {
   max-width: 100%;
   display: block;
@@ -198,7 +199,7 @@ html {
 }
 
 main {
-  padding-top: 4rem;
+  margin: 0 auto;
 }
 
 .absolute {
@@ -214,4 +215,32 @@ main {
 
 .bold {
   font-weight: var(--fw-medium);
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    display: grid;
+    place-content: center;
+    min-height: 95vh;
+  }
+  main {
+    width: 95vw;
+    height: 85vh;
+    max-width: var(--maxWidth);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 2em;
+    padding: 1em;
+    box-shadow: var(--dark-shadow);
+    background-color: var(--clr-white);
+    border-radius: 1rem;
+  }
+}
+
+@media screen and (min-width: 1070px) {
+  main {
+    gap: 2em 0;
+  }
 }

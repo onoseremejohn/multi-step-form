@@ -3,11 +3,11 @@ import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 function App() {
   return (
-    <>
+    <main>
       <Buttons />
       <Form />
       <Footer />
-    </>
+    </main>
   );
 }
 
