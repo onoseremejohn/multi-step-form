@@ -13,7 +13,7 @@ const Form = () => {
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
       {page === 4 && <Step4 />} */}
-      <Step2 />
+      <Step4 />
     </Wrapper>
   );
 };

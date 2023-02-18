@@ -1,6 +1,6 @@
 import { useContext, createContext, useReducer } from "react";
 import reducer from "./reducer";
-import { SET_USER, SET_PAGE, SET_ERROR, SET_PLAN } from "./actions";
+import { SET_USER, SET_PAGE, SET_ERROR, SET_PLAN, SET_ADDON } from "./actions";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
@@ -8,13 +8,14 @@ const AppProvider = ({ children }) => {
     name: "",
     email: "",
     phoneNumber: "",
-    plan: { name: null, duration: "monthly" },
-    addOn: [],
-    page: 1,
+    plan: { name: "sfgy", duration: "week" },
+    addOns: [],
+    page: 4,
     error: {
       name: "",
       email: "",
       number: "",
+      plan: false,
     },
   };
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -35,6 +36,10 @@ const AppProvider = ({ children }) => {
 
   const setPlan = (name, value) => {
     dispatch({ type: SET_PLAN, payload: { name, value } });
+  };
+
+  const setAddOn = (val, name) => {
+    dispatch({ type: SET_ADDON, payload: { val, name } });
   };
 
   function validateUserInfo(name, email, number) {
@@ -67,7 +72,15 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ ...state, setUser, setPage, validateUserInfo, setPlan }}
+      value={{
+        ...state,
+        setUser,
+        setPage,
+        validateUserInfo,
+        setPlan,
+        setError,
+        setAddOn,
+      }}
     >
       {children}
     </AppContext.Provider>

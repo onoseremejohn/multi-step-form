@@ -1,14 +1,23 @@
 import styled from "styled-components";
+import { useGlobalContext } from "../Context";
 
-const SingleAddOn = ({ name, text, yearly, monthly }) => {
+const SingleAddOn = ({ name, text, selected, ...props }) => {
+  const {
+    plan: { duration },
+    setAddOn,
+  } = useGlobalContext();
+  const handleSelect = (e) => {
+    const val = e.target.checked;
+    setAddOn(val, name);
+  };
   return (
-    <Wrapper>
-      <input type='checkbox' />
+    <Wrapper selected={selected}>
+      <input type='checkbox' onChange={handleSelect} />
       <div>
         <h4>{name}</h4>
         <p>{text}</p>
       </div>
-      <p className='bill'>{monthly}</p>
+      <p className='bill'>{props[duration]}</p>
     </Wrapper>
   );
 };
@@ -17,8 +26,10 @@ const Wrapper = styled.label`
   display: flex;
   align-items: center;
   gap: 1em;
-  border: 1px solid purple;
-  background-color: var(--clr-grey-10);
+  border: ${({ selected }) =>
+    selected ? "1px solid purple" : "1px solid #cccccc"};
+  background-color: ${({ selected }) =>
+    selected ? "var(--clr-grey-10)" : "none"};
   border-radius: var(--radius);
   padding: 0.8em;
   input[type="checkbox"] {
@@ -36,6 +47,7 @@ const Wrapper = styled.label`
   }
   .bill {
     margin-left: auto;
+    color: purple;
   }
 `;
 

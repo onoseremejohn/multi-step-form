@@ -9,12 +9,19 @@ const Footer = () => {
     name,
     email,
     plan: { name: planName },
+    setError,
   } = useGlobalContext();
   const handleNext = () => {
     if (page === 1) {
       validateUserInfo(name, email, phoneNumber);
     } else if (page === 2) {
-      setPage("next");
+      if (!planName) {
+        setError("plan");
+        return;
+      } else {
+        setError();
+        setPage("next");
+      }
     } else {
       setPage("next");
     }
@@ -28,7 +35,12 @@ const Footer = () => {
         >
           Go Back{" "}
         </button>
-        <button onClick={handleNext}>Next Step</button>
+        <button
+          onClick={handleNext}
+          className={`${page === 4 ? "last-page" : ""}`}
+        >
+          Next Step
+        </button>
       </div>
     </Wrapper>
   );
@@ -62,6 +74,9 @@ const Wrapper = styled.footer`
   button.back {
     background-color: unset;
     color: #999999;
+  }
+  .last-page {
+    background-color: #0c28f0;
   }
   @media screen and (min-width: 800px) {
     grid-column: 2/3;

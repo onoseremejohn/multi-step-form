@@ -1,32 +1,45 @@
 import styled from "styled-components";
+import { useGlobalContext } from "../Context";
 
 const Step4 = () => {
+  const {
+    plan: { name, duration },
+  } = useGlobalContext();
   return (
     <Wrapper>
       <h2>Finishing up</h2>
       <p className='text'>Double-check everything looks OK before confirming</p>
-      <div className='dark-bg'>
-        <div className='flex'>
+      <ul className='dark-bg'>
+        <li className='flex'>
           <div>
-            <h4>Arcade (Monthly)</h4>
-            <p className='grey' style={{ textDecoration: "underline" }}>
+            <h4>
+              {name} ({duration})
+            </h4>
+            <p
+              className='grey'
+              style={{ textDecoration: "underline", cursor: "pointer" }}
+            >
               Change
             </p>
           </div>
           <p style={{ fontWeight: "600" }}>+$90/yr</p>
-        </div>
-        <div className='flex'>
+        </li>
+        <li className='flex'>
           <p className='grey'>Online service</p>
           <p>+$10/yr</p>
-        </div>
-        <div className='flex'>
+        </li>
+        <li className='flex'>
           <p className='grey'>Larger storage</p>
           <p>+$20/yr</p>
-        </div>
-      </div>
+        </li>
+        <li className='flex'>
+          <p className='grey'>Customizable Profile</p>
+          <p>+$20/yr</p>
+        </li>
+      </ul>
       <div className='flex total'>
         <p className='grey'>Total (per year)</p>
-        <p style={{ fontWeight: "600", color: "purple" }}>$120/yr</p>
+        <p style={{ fontWeight: "600", color: "#5a06c0" }}>$120/yr</p>
       </div>
     </Wrapper>
   );

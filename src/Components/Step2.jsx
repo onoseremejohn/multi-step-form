@@ -5,6 +5,7 @@ import SinglePlan from "./SinglePlan";
 const Step2 = () => {
   const {
     plan: { name },
+    error: { plan: planError },
     setPlan,
   } = useGlobalContext();
   const handleSwitch = (e) => {
@@ -28,15 +29,25 @@ const Step2 = () => {
         </label>
         <p>Yearly</p>
       </div>
+      {planError && <p className='error'>Please specify your plan</p>}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  position: relative;
   .text {
     font-size: 1.2rem;
     margin-bottom: 1em;
     color: #999999;
+  }
+  .error {
+    color: red;
+    font-weight: 600;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .plans {
     display: flex;
@@ -52,6 +63,7 @@ const Wrapper = styled.div`
     gap: 1.5em;
     border-radius: var(--radius);
     padding: 0.5em 0;
+
     p {
       font-weight: 600;
       font-size: 1rem;
@@ -95,6 +107,9 @@ const Wrapper = styled.div`
     .plans {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+    }
+    .error {
+      bottom: -50px;
     }
   }
 `;
