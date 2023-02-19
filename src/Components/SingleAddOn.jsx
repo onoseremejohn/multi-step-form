@@ -17,7 +17,9 @@ const SingleAddOn = ({ name, text, selected, ...props }) => {
         <h4>{name}</h4>
         <p>{text}</p>
       </div>
-      <p className='bill'>{props[duration]}</p>
+      <p className='bill'>
+        +${props[duration]}/{duration === "monthly" ? "mo" : "yr"}
+      </p>
     </Wrapper>
   );
 };

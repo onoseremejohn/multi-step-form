@@ -17,6 +17,12 @@ export default function (state, action) {
         newPage = newPage < 1 ? 1 : newPage;
         return { ...state, page: newPage };
       }
+      if (action.payload === 2) {
+        return { ...state, page: 2 };
+      }
+      if (action.payload === "submit") {
+        return { ...state, page: "submit" };
+      }
     }
     case SET_ERROR:
       const error = action.payload;

@@ -8,9 +8,9 @@ const AppProvider = ({ children }) => {
     name: "",
     email: "",
     phoneNumber: "",
-    plan: { name: "sfgy", duration: "week" },
+    plan: { name: null, duration: "monthly" },
     addOns: [],
-    page: 4,
+    page: 1,
     error: {
       name: "",
       email: "",

@@ -22,10 +22,17 @@ const Footer = () => {
         setError();
         setPage("next");
       }
+    } else if (page === 4) {
+      setPage("submit");
     } else {
       setPage("next");
     }
   };
+
+  if (page === "submit") {
+    return null;
+  }
+
   return (
     <Wrapper>
       <div className='section-center'>
@@ -39,7 +46,7 @@ const Footer = () => {
           onClick={handleNext}
           className={`${page === 4 ? "last-page" : ""}`}
         >
-          Next Step
+          {page === 4 ? "Confirm" : "Next Step"}
         </button>
       </div>
     </Wrapper>

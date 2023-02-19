@@ -4,16 +4,18 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+import Submit from "./Submit";
 
 const Form = () => {
   const { page } = useGlobalContext();
   return (
     <Wrapper className='section-center'>
-      {/* {page === 1 && <Step1 />}
+      {page === 1 && <Step1 />}
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
-      {page === 4 && <Step4 />} */}
-      <Step4 />
+      {page === 4 && <Step4 />}
+      {page === "submit" && <Submit />}
+      {/* <Step1 /> */}
     </Wrapper>
   );
 };

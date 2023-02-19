@@ -1,16 +1,30 @@
 import styled from "styled-components";
 import { useGlobalContext } from "../Context";
+import { plans, addOns as data } from "../data";
+import SingleCheckout from "./SingleCheckout";
 
 const Step4 = () => {
   const {
     plan: { name, duration },
+    addOns,
+    setPage,
   } = useGlobalContext();
+  const plan = plans.find((plan) => plan.name === name);
+  const calculateTotal = () => {
+    const planPrice = plan[duration];
+    const addonsTotal = addOns.reduce((total, addon) => {
+      const price = data.find((p) => p.name === addon)[duration];
+      total += price;
+      return total;
+    }, 0);
+    return addonsTotal + planPrice;
+  };
   return (
     <Wrapper>
       <h2>Finishing up</h2>
       <p className='text'>Double-check everything looks OK before confirming</p>
       <ul className='dark-bg'>
-        <li className='flex'>
+        <li className='flex first'>
           <div>
             <h4>
               {name} ({duration})
@@ -18,28 +32,25 @@ const Step4 = () => {
             <p
               className='grey'
               style={{ textDecoration: "underline", cursor: "pointer" }}
+              onClick={() => setPage(2)}
             >
               Change
             </p>
           </div>
-          <p style={{ fontWeight: "600" }}>+$90/yr</p>
+          <p style={{ fontWeight: "600" }}>
+            ${plan[duration]}/{duration === "monthly" ? "mo" : "yr"}
+          </p>
         </li>
-        <li className='flex'>
-          <p className='grey'>Online service</p>
-          <p>+$10/yr</p>
-        </li>
-        <li className='flex'>
-          <p className='grey'>Larger storage</p>
-          <p>+$20/yr</p>
-        </li>
-        <li className='flex'>
-          <p className='grey'>Customizable Profile</p>
-          <p>+$20/yr</p>
-        </li>
+        {addOns.length > 0 && <hr />}
+        {addOns.map((addon) => (
+          <SingleCheckout name={addon} key={addon} />
+        ))}
       </ul>
       <div className='flex total'>
         <p className='grey'>Total (per year)</p>
-        <p style={{ fontWeight: "600", color: "#5a06c0" }}>$120/yr</p>
+        <p style={{ fontWeight: "600", color: "#5a06c0" }}>
+          ${calculateTotal()}/{duration === "monthly" ? "mo" : "yr"}
+        </p>
       </div>
     </Wrapper>
   );
@@ -67,8 +78,12 @@ const Wrapper = styled.div`
     justify-content: space-between;
     margin-bottom: 1em;
   }
+  hr {
+    margin: 1.5em 0;
+  }
   .total {
     padding: 0 1em;
+    margin-bottom: 0;
   }
   .grey {
     color: #999999;

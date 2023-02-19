@@ -11,7 +11,9 @@ const SinglePlan = ({ name, icon, selected, ...props }) => {
       <img src={icon} alt={name} />
       <div>
         <h4>{name}</h4>
-        <p className='bill'>{props[duration]}</p>
+        <p className='bill'>
+          ${props[duration]}/{duration === "monthly" ? "mo" : "yr"}
+        </p>
         {duration === "yearly" && <p>2 months free</p>}
       </div>
     </Wrapper>
