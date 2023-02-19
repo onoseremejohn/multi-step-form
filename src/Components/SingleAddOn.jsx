@@ -12,7 +12,7 @@ const SingleAddOn = ({ name, text, selected, ...props }) => {
   };
   return (
     <Wrapper selected={selected}>
-      <input type='checkbox' onChange={handleSelect} />
+      <input type='checkbox' onChange={handleSelect} checked={selected} />
       <div>
         <h4>{name}</h4>
         <p>{text}</p>

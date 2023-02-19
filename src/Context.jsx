@@ -47,7 +47,7 @@ const AppProvider = ({ children }) => {
     const nameRegex = /^[\p{L}'-]+\s+[\p{L}'-]+(\s+[\p{L}'-]+)*$/u;
     const emailRegex =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\. [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const phoneRegex = /^\+?\d{8,12}$/;
+    const phoneRegex = /^\+?\d{8,14}$/;
 
     const next =
       nameRegex.test(name.trim()) &&

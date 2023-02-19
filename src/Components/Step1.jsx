@@ -88,10 +88,12 @@ const Wrapper = styled.div`
     }
     padding: 0 1em;
     max-width: 600px;
+    height: 2.5em;
   }
 
   label {
     display: flex;
+    max-width: 600px;
   }
 
   label > span {
@@ -100,6 +102,11 @@ const Wrapper = styled.div`
     margin-left: auto;
   }
 
+  @media screen and (max-width: 464px) {
+    label > span {
+      font-size: 0.7rem;
+    }
+  }
   @media screen and (min-width: 800px) {
     .form-control input {
       height: 3em;

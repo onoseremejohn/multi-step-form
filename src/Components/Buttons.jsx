@@ -29,7 +29,11 @@ const Buttons = () => {
           </div>
         </li>
         <li>
-          <span className={`${page === 4 ? "active" : null}`}>4</span>
+          <span
+            className={`${page === 4 || page === "submit" ? "active" : null}`}
+          >
+            4
+          </span>
           <div>
             <p className='step'>STEP 4</p>
             <p className='bold'>SUMMARY</p>

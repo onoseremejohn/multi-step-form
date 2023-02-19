@@ -4,14 +4,16 @@ import { plans } from "../data";
 import SinglePlan from "./SinglePlan";
 const Step2 = () => {
   const {
-    plan: { name },
+    plan: { name, duration },
     error: { plan: planError },
     setPlan,
   } = useGlobalContext();
+
   const handleSwitch = (e) => {
     const duration = e.target.checked ? "yearly" : "monthly";
     setPlan("duration", duration);
   };
+
   return (
     <Wrapper>
       <h2>Select your plan</h2>
@@ -24,7 +26,11 @@ const Step2 = () => {
       <div className='time'>
         <p>Monthly</p>
         <label className='switch'>
-          <input type='checkbox' onChange={handleSwitch} />
+          <input
+            type='checkbox'
+            onChange={handleSwitch}
+            checked={duration === "yearly"}
+          />
           <span></span>
         </label>
         <p>Yearly</p>
