@@ -15,7 +15,6 @@ const Form = () => {
       {page === 3 && <Step3 />}
       {page === 4 && <Step4 />}
       {page === "submit" && <Submit />}
-      {/* <Step3 /> */}
     </Wrapper>
   );
 };

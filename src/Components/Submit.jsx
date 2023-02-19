@@ -5,21 +5,21 @@ import Check from "../assets/images/icon-thank-you.svg";
 const Submit = () => {
   const [count, setCount] = useState(5);
   const [redirecting, setRedirecting] = useState(false);
-  //   useEffect(() => {
-  //     const timer = setInterval(
-  //       () => setCount((prevCount) => prevCount - 1),
-  //       1000
-  //     );
+  useEffect(() => {
+    const timer = setInterval(
+      () => setCount((prevCount) => prevCount - 1),
+      1000
+    );
 
-  //     setTimeout(() => {
-  //       setRedirecting(true);
-  //       clearInterval(timer);
-  //       window.location.replace("https://onosereme.netlify.app/contact");
-  //     }, 5000);
-  //     return () => {
-  //       clearInterval(timer);
-  //     };
-  //   }, []);
+    setTimeout(() => {
+      setRedirecting(true);
+      clearInterval(timer);
+      window.open("https://onosereme.netlify.app/contact", "_blank");
+    }, 5000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
   return (
     <Wrapper className='text-center'>
       <img src={Check} alt='checkmark' />

@@ -29,11 +29,7 @@ const Step4 = () => {
             <h4>
               {name} ({duration})
             </h4>
-            <p
-              className='grey'
-              style={{ textDecoration: "underline", cursor: "pointer" }}
-              onClick={() => setPage(2)}
-            >
+            <p className='grey change' onClick={() => setPage(2)}>
               Change
             </p>
           </div>
@@ -47,7 +43,9 @@ const Step4 = () => {
         ))}
       </ul>
       <div className='flex total'>
-        <p className='grey'>Total (per year)</p>
+        <p className='grey'>
+          Total (per {duration === "monthly" ? "month" : "year"})
+        </p>
         <p style={{ fontWeight: "600", color: "#5a06c0" }}>
           ${calculateTotal()}/{duration === "monthly" ? "mo" : "yr"}
         </p>
@@ -87,6 +85,13 @@ const Wrapper = styled.div`
   }
   .grey {
     color: #999999;
+  }
+  .change {
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+      color: #0c28f0;
+    }
   }
 `;
 

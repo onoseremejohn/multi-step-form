@@ -34,6 +34,10 @@ const Wrapper = styled.label`
     selected ? "var(--clr-grey-10)" : "none"};
   border-radius: var(--radius);
   padding: 0.8em;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid purple;
+  }
   input[type="checkbox"] {
     width: 1.5rem;
     height: 1.5rem;
@@ -49,7 +53,7 @@ const Wrapper = styled.label`
   }
   .bill {
     margin-left: auto;
-    color: purple;
+    color: #5a06c0;
   }
 `;
 

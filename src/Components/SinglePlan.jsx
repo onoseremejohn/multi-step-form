@@ -30,6 +30,9 @@ const Wrapper = styled.div`
     selected ? "var(--clr-grey-10)" : "none"};
   border-radius: var(--radius);
   padding: 1em;
+  &:hover {
+    border: 1px solid purple;
+  }
   cursor: pointer;
   h4 {
     margin: 0;

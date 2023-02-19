@@ -42,10 +42,7 @@ const Footer = () => {
         >
           Go Back{" "}
         </button>
-        <button
-          onClick={handleNext}
-          className={`${page === 4 ? "last-page" : ""}`}
-        >
+        <button onClick={handleNext} className={`${page === 4 && "last-page"}`}>
           {page === 4 ? "Confirm" : "Next Step"}
         </button>
       </div>
@@ -81,9 +78,15 @@ const Wrapper = styled.footer`
   button.back {
     background-color: unset;
     color: #999999;
+    &:hover {
+      color: var(--clr-grey-2);
+    }
   }
   .last-page {
     background-color: #0c28f0;
+    &:hover {
+      opacity: 0.5;
+    }
   }
   @media screen and (min-width: 800px) {
     grid-column: 2/3;

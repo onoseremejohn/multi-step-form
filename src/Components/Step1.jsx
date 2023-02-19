@@ -24,6 +24,7 @@ const Step1 = () => {
             value={name}
             placeholder='e.g. Stephen King'
             onChange={setUser}
+            className={`${nameError && "error"}`}
           />
         </div>
         <div className='form-control'>
@@ -37,6 +38,7 @@ const Step1 = () => {
             value={email}
             placeholder='e.g. stephenking@lorem.com'
             onChange={setUser}
+            className={`${emailError && "error"}`}
           />
         </div>
         <div className='form-control'>
@@ -50,6 +52,7 @@ const Step1 = () => {
             value={phoneNumber}
             placeholder='e.g. +1 234 567 890'
             onChange={setUser}
+            className={`${phoneNumberError && "error"}`}
           />
         </div>
       </form>
@@ -79,7 +82,7 @@ const Wrapper = styled.div`
     outline: none;
     border: 1px solid grey;
     border-radius: var(--radius);
-    &:focus-visible {
+    &:focus-visible:not(.error) {
       outline: 1px solid purple;
     }
     &::-webkit-inner-spin-button,
@@ -89,6 +92,10 @@ const Wrapper = styled.div`
     padding: 0 1em;
     max-width: 600px;
     height: 2.5em;
+  }
+
+  .form-control input.error {
+    border: 1px solid red;
   }
 
   label {
