@@ -4,22 +4,40 @@ import Check from "../assets/images/icon-thank-you.svg";
 
 const Submit = () => {
   const [count, setCount] = useState(5);
-  const [redirecting, setRedirecting] = useState(false);
-  useEffect(() => {
-    const timer = setInterval(
-      () => setCount((prevCount) => prevCount - 1),
-      1000
-    );
+  const [redirecting, setRedirecting] = useState(true);
+  const [redirected, setRedirected] = useState(false);
 
-    setTimeout(() => {
-      setRedirecting(true);
-      clearInterval(timer);
-      window.open("https://onosereme.netlify.app/contact", "_blank");
-    }, 5000);
+  useEffect(() => {
+    let timer;
+    if (redirecting) {
+      timer = setTimeout(() => {
+        setRedirecting(false);
+        const newWindow = window.open(
+          "https://onosereme.netlify.app/contact",
+          "_blank"
+        );
+        if (!newWindow || typeof newWindow.closed == "undefined") {
+          setRedirected(false);
+        } else setRedirected(true);
+      }, count * 1000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [redirecting, count]);
+
+  useEffect(() => {
+    let timer;
+    if (count > 0 && redirecting) {
+      timer = setInterval(() => {
+        setCount((prev) => prev - 1);
+      }, 1000);
+    }
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [redirecting, count]);
+
   return (
     <Wrapper className='text-center'>
       <img src={Check} alt='checkmark' />
@@ -30,9 +48,14 @@ const Submit = () => {
         <a href='mailto:support@loremgaming.com'>support@loremgaming.com</a>{" "}
         <br /> <br />
         {redirecting ? (
-          <p>Redirecting...</p>
+          <>Redirecting to developer's profile in {count} seconds...</>
+        ) : redirected ? (
+          <>You have been redirected</>
         ) : (
-          <p>Redirecting to developer's profile in {count} seconds</p>
+          <>
+            If you were not redirected, please click{" "}
+            <a href='https://onosereme.netlify.app/contact'>here</a>.
+          </>
         )}
       </p>
     </Wrapper>
