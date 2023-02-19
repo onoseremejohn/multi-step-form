@@ -54,7 +54,10 @@ const Submit = () => {
         ) : (
           <>
             If you were not redirected, please click{" "}
-            <a href='https://onosereme.netlify.app/contact'>here</a>.
+            <a href='https://onosereme.netlify.app/contact' target='_blank'>
+              here
+            </a>
+            .
           </>
         )}
       </p>
