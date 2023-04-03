@@ -35,7 +35,7 @@ const Footer = () => {
 
   return (
     <Wrapper>
-      <div className='section-center'>
+      <div className="section-center">
         <button
           className={`${page === 1 ? "back hidden" : "back"}`}
           onClick={() => setPage("prev")}

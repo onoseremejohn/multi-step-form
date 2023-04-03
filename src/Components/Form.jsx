@@ -9,7 +9,7 @@ import Submit from "./Submit";
 const Form = () => {
   const { page } = useGlobalContext();
   return (
-    <Wrapper className='section-center'>
+    <Wrapper className="section-center">
       {page === 1 && <Step1 />}
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
